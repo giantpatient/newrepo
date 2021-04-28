@@ -1,0 +1,117 @@
+{% extends "base.html" %}
+{% block homeactive %}active{% endblock homeactive %}
+{% block title %}Home{% endblock title %}
+{% block body %}
+{% load static %}
+<div class="container">
+
+    <div class="jumbotron text-center">
+        <h3 class="display-4 my-3">! File Downloader !</h3>
+        <p class="lead">This is a simple Website to download files, For downloading course books and study materials.
+        </p>
+        <hr class="my-4">
+        {% if user.is_authenticated %}
+        {% else %}
+        <p>Login here to upload or download files</p>
+        {% endif %}
+    </div>
+</div>
+
+
+<!-- Button trigger modal src="{% static 'image/maths.jpg' %}"-->
+{% if user.is_authenticated %}
+
+<center>
+
+    <div class="card" style="width: 15rem;display: inline-block;margin-left: auto;">
+        <img src="{% static 'image/maths.jpg' %}" class="card-img-top" alt="...">
+        <div class="card-body">
+            <h5 class="card-title">Mathematics</h5>
+            <p class="card-text">Mathematics study materials and books.</p>
+            <a href="/sub1" class="btn btn-outline-danger">Go to files</a>
+        </div>
+    </div>
+    <div class="card" style="width: 15rem;display: inline-block;">
+        <img src="{% static 'image/chemistry.jpg' %}" class="card-img-top" alt="...">
+        <div class="card-body">
+            <h5 class="card-title">Chemistry</h5>
+            <p class="card-text">Chemistry study materials and books.</p>
+            <a href="/sub3" class="btn btn-outline-danger">Go to files</a>
+        </div>
+    </div>
+    <div class="card" style="width: 15rem;display: inline-block;">
+        <img src="{% static 'image/physics.jpg' %}" class="card-img-top" alt="...">
+        <div class="card-body">
+            <h5 class="card-title">Physics</h5>
+            <p class="card-text">Physics study materials and books.</p>
+            <a href="/sub2" class="btn btn-outline-danger">Go to files</a>
+        </div>
+    </div>
+    <div class="card" style="width: 15rem;display: inline-block;">
+        <img src="{% static 'image/mechanical.jpg' %}" class="card-img-top" alt="...">
+        <div class="card-body">
+            <h5 class="card-title">Mechanical Engg.</h5>
+            <p class="card-text">Machenical Engg. study materials and books.</p>
+            <a href="/sub4" class="btn btn-outline-danger">Go to files</a>
+        </div>
+    </div>
+    <div class="card" style="width: 15rem;display: inline-block;margin-right: auto;">
+        <img src="{% static 'image/workshop.jpg' %}" class="card-img-top" alt="...">
+        <div class="card-body">
+            <h5 class="card-title">Workshop practice</h5>
+            <p class="card-text">Workshop practice study materials and books.</p>
+            <a href="/sub5" class="btn btn-outline-danger">Go to files</a>
+        </div>
+    </div>
+</center>
+
+
+
+
+
+
+{% else %}
+<center>
+    <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
+        Login
+    </button>
+</center>
+{% endif %}
+<!-- Modal -->
+<div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
+    aria-labelledby="staticBackdropLabel" aria-hidden="true">
+    <form action="/login" method="POST">
+        {% csrf_token %}
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+
+                <div class="modal-header">
+                    <h5 class="modal-title" id="staticBackdropLabel">Login Here</h5>
+                </div>
+                <div class="modal-body">
+
+                    <div class="form-group">
+                        <label for="usernameform">Username</label>
+                        <input type="text" class="form-control my-3" name="username" id="usernameform"
+                            aria-describedby="emailHelp">
+
+                    </div>
+                    <div class="form-group">
+                        <label for="passwordform">Password</label>
+                        <input type="password" class="form-control my-3" name="password" id="passwordform">
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                    <button type="submit" class="btn btn-primary">Submit</button>
+                </div>
+            </div>
+        </div>
+    </form>
+</div>
+
+
+
+
+
+{% endblock body %}

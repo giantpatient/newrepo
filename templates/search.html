@@ -1,0 +1,30 @@
+{% extends "base.html" %}
+
+{% block title %}Search{% endblock title %}
+
+{% block viewactive %}active{% endblock viewactive %}
+
+{% block body %}
+{% load static %}
+<link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}">
+
+<div class="container my-4" style="width: 70%;">
+    <h2>Download files form here</h2>
+    <hr>
+    {% if post %}
+    {% for i in post %}
+    <div class="card-body">
+        <b>
+            <a class="headding" href="{{i.url}}">{{i.name}}</a>
+        </b><br>{{i.subject}}<br>
+        <a href="{{i.url}}" class="btn btn-outline-danger my-3">Go to download</a>
+        <hr>
+    </div>
+    {% endfor %}
+    {% else %}
+    <h5><strong>!! Opps!!</strong> No File avalable</h5>
+    {% endif %}
+</div>
+
+
+{% endblock body %}

@@ -1,0 +1,31 @@
+{% extends "base.html" %}
+{% block title %} home {% endblock title %}
+{% block contactactive %}active {% endblock contactactive %}
+{% block body %}
+<div class="container">
+    <br><br>
+    <h3>Provide your Feedback</h3>
+    <form action="/feed", method="post">
+        {% csrf_token %}
+        <div class="form-group">
+            <label for="name">Name</label>
+            <input type="text" class="form-control my-2" name='name' id="name" aria-describedby="emailHelp"
+                placeholder="Enter your name">
+        </div>
+        <div class="form-group">
+            <label for="email">Email address</label>
+            <input type="email" class="form-control my-2" name="email" id="email" aria-describedby="emailHelp"
+                placeholder="Enter email">
+            <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
+        </div>
+        <div class="form-group">
+            <label for="disc">Describe your issue</label>
+            <textarea type="text" class="form-control my-2" name="issue" id="disc" aria-describedby="emailHelp"
+                placeholder="Enter your Feedback">
+            </textarea>
+        </div>
+       
+        <button type="submit" class="btn btn-primary my-2">Submit</button>
+    </form>
+</div>
+{% endblock body %}
