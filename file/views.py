@@ -3,6 +3,7 @@ from django.contrib.auth.models import User
 from django.contrib.auth import login, logout,authenticate
 from django.contrib import messages
 from django.conf import settings
+from django.template import RequestContext
 from .models import file,feedback
 from django.contrib.auth.decorators import login_required
 # Create your views here.
@@ -23,10 +24,10 @@ def logincheck(request):
             login(request,user)
             messages.success(request,'succesfully loged in')
             print(params)
-            return render(request,'home.html',params)
+            return render(request,'home.html',params,context_instance=RequestContext(request))
         else:
             messages.error(request,'invalid cradentials')
-            return render(request,'home.html')
+            return render(request,'home.html',context_instance=RequestContext(request))
     return HttpResponse("Error 404 not avalable")
 
 
