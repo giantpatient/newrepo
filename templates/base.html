@@ -16,6 +16,17 @@
 <body>
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
         <div class="container-fluid">
+
+            {% load static %}
+            <a class="navbar-brand" href="#">
+                <img src="{% static 'image/logo.png' %}" alt="" width="30" height="24">
+            </a>
+
+
+
+
+
+
             <a class="navbar-brand" href="/">File downloader</a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
                 data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
@@ -65,9 +76,10 @@
                 </form>
 
 
-
-                <a class="btn btn-success mt-1" type="submit"><strong>Welcome: {{username}}</strong></a>
-                <a class="btn btn-outline-danger mt-1 mx-2" href="/logout" type="submit"><strong>Logout</strong></a>
+                <div class="btn-group" role="group" aria-label="Basic outlined example">
+                    <b class="btn btn-warning mt-1"><strong>Welcome: {{username}}</strong></b>
+                    <a class="btn btn-outline-danger mt-1" href="/logout"><strong>Logout</strong></a>
+                </div>
                 <!--
 
                 <b style="color: aliceblue;" class='nav-link disabled'>
