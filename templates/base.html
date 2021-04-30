@@ -44,11 +44,12 @@
                             <li><a class="dropdown-item" href="/sub5">Workshop practice</a></li>
                             
                             
-                            
+                            <!-- 
                             <li>
                                 <hr class="dropdown-divider">
                             </li>
                             <li><a class="dropdown-item" href="#">Others</a></li>
+                            -->
                         </ul>
                     </li>
                     <li class="nav-item">
@@ -60,18 +61,27 @@
                 {% if user.is_authenticated %}
                 <form action="/search" method="GET" class="d-flex">
                     <input class="form-control me-2" type="search" name="query" placeholder="Search" aria-label="Search">
-                    <button class="btn btn-outline-success" type="submit">Search</button>
+                    <button class="btn btn-outline-success mx-2" type="submit">Search</button>
                 </form>
 
+
+
+                <a class="btn btn-success my-1" type="submit"><strong>Welcome: {{username}}</strong></a>
+                <a class="btn btn-outline-danger my-1 mx-2" href="/logout" type="submit"><strong>Logout</strong></a>
+                <!--
 
                 <b style="color: aliceblue;" class='nav-link disabled'>
                     Welcome: {{username}} 
                 </b>
+
                 <a style="color:white;text-decoration: none;padding-left: 7px;padding-right: 7px;margin-right: 20px;
                 background-color: rgb(0, 128, 0);border-radius: 10px;" href="/logout" type="submit">Logout</a>
 
+                -->
+
                 {% else %}
                 {% endif %}
+                
                 
             </div>
         </div>
