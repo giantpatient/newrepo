@@ -3,7 +3,7 @@ from django.contrib.auth.models import User
 from django.contrib.auth import login, logout,authenticate
 from django.contrib import messages
 from django.conf import settings
-from django.template import RequestContext
+from django.views.decorators.csrf import csrf_exempt
 from .models import file,feedback
 from django.contrib.auth.decorators import login_required
 # Create your views here.
@@ -13,7 +13,7 @@ def home(request):
     username = request.user.username
     return render(request,'home.html',{'username':username})
 
-
+@csrf_exempt
 def logincheck(request):
     if request.method=='POST':
         username_=request.POST['username']
@@ -110,6 +110,7 @@ def sub5(request):
 
 
 @login_required(login_url='/login')
+@csrf_exempt
 def feed(request):
     
     if request.method=='POST':
