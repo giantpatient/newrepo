@@ -24,10 +24,10 @@ def logincheck(request):
             login(request,user)
             messages.success(request,'succesfully loged in')
             print(params)
-            return redirect('home.html',params)
+            return redirect('/',params)
         else:
             messages.error(request,'invalid cradentials')
-            return redirect('home.html')
+            return redirect('/')
     return HttpResponse("Error 404 not avalable")
 
 
